@@ -129,6 +129,7 @@ fi
 
 # Output the final file if requested
 if [ "$output_result" = true ]; then
-    echo "Final file content of '$target_file':"
+    echo -e "Final file content of '$target_file':\n-------------------------"
     cat "$target_file"
+    echo "-------------------------"
 fi
