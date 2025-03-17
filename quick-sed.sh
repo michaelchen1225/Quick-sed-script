@@ -130,6 +130,6 @@ fi
 # Output the final file if requested
 if [ "$output_result" = true ]; then
     echo -e "Final file content of '$target_file':\n-------------------------"
-    cat "$target_file"
+    cat -n "$target_file"
     echo "-------------------------"
 fi
