@@ -34,27 +34,45 @@ Replaces all occurrences of `hello` with `bye` in `test.txt`.
 
 If there are multiple occurrences of `hello` in `test.txt`, the user can choose which lines to modify：
 
-```
-$ ./quick-sed.sh -o hello bye test.txt
-Multiple occurrences of 'hello' found in 'test.txt':
-1:hello world
-5:hello world
-7:hello to you.
-Enter the line numbers to modify (comma-separated) or 'all' to replace all:
-5
-Replaced occurrences in selected lines of 'test.txt'.
-Final file content of 'test.txt':
+```bash
+cat <<EOF > test.txt
 hello world
 
 this is a quck sed script
 
-bye world
+hello to everyone
 
 hello to you.
 
-bye
+bye !
+EOF
 ```
 
+```bash
+$ ./quick-sed.sh -o hello bye test.txt
+```
+
+```plaintext
+Multiple occurrences of 'hello' found in 'test.txt':
+1:hello world
+5:hello to everyone
+7:hello to you.
+Enter the line numbers to modify (comma-separated) or 'all' to replace all:
+1,7
+Replaced occurrences in selected lines of 'test.txt'.
+Final file content of 'test.txt':
+-------------------------
+     1  bye world
+     2
+     3  this is a quck sed script
+     4
+     5  hello to everyone
+     6
+     7  bye to you.
+     8
+     9  bye !
+-------------------------
+```
 
 #### Replace with backup
 ```sh
